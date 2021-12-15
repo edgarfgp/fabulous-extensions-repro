@@ -19,6 +19,7 @@ module App =
     let update msg model =
         match msg with
         | LoanAmountChanged amount ->
+            printfn $" ----> {amount}"
             let model = { model with Amount = amount }
             model, Cmd.none
 
@@ -40,7 +41,7 @@ module App =
                                   trackProgressWidth = 20.,
                                   arc = 310.,
                                   start = 115.,
-                                  value = model.Amount,
+                                  value = 100.,//model.Amount,
                                   minimum = 0.,
                                   maximum = 1500.,
                                   onValueChanged = fun args -> dispatch (LoanAmountChanged args.NewValue)) ]
